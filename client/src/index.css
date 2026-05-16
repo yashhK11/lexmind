@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #f5f0e8;
+  --white: #ffffff;
+  --navy: #1b3a5c;
+  --navy-light: #2a527a;
+  --text-dark: #1a1a2e;
+  --text-muted: #6b7280;
+  --border: #e5ddd0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--text-dark);
+  font-family: "Georgia", serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--navy);
+  border-radius: 3px;
+}
+
+/* Utility classes */
+.btn-primary {
+  background-color: var(--navy);
+  color: var(--white);
+  padding: 10px 24px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--navy-light);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--navy);
+  padding: 10px 24px;
+  border-radius: 6px;
+  border: 2px solid var(--navy);
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+  background-color: var(--navy);
+  color: var(--white);
+}
+
+.card {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+}
