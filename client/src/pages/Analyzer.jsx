@@ -1,3 +1,4 @@
+import BASE_URL from "../api.js";
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
@@ -34,7 +35,7 @@ const Analyzer = () => {
   const fetchExisting = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/summary/${summaryId}`, {
+      const res = await fetch(`${BASE_URL}/api/summary/${summaryId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -56,7 +57,7 @@ const Analyzer = () => {
       const formData = new FormData();
       formData.append("pdf", file);
 
-      const res = await fetch("/api/summary/analyze", {
+      const res = await fetch(`${BASE_URL}/api/summary/analyze`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
         body: formData,
@@ -79,7 +80,6 @@ const Analyzer = () => {
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "var(--cream)" }}>
       <Navbar />
-
       <div
         style={{ maxWidth: "800px", margin: "0 auto", padding: "48px 24px" }}
       >
@@ -105,7 +105,6 @@ const Analyzer = () => {
           summary
         </p>
 
-        {/* Upload Box */}
         {!summaryId && (
           <div className="card" style={{ marginBottom: "32px" }}>
             <div
@@ -196,7 +195,6 @@ const Analyzer = () => {
           </p>
         )}
 
-        {/* Summary Output */}
         {summary && (
           <div
             style={{ display: "flex", flexDirection: "column", gap: "20px" }}
@@ -226,9 +224,7 @@ const Analyzer = () => {
               <div
                 key={key}
                 className="card"
-                style={{
-                  borderLeft: "4px solid var(--navy)",
-                }}
+                style={{ borderLeft: "4px solid var(--navy)" }}
               >
                 <h3
                   style={{

@@ -1,3 +1,4 @@
+import BASE_URL from "../api.js";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
@@ -17,7 +18,9 @@ const Auth = () => {
     setError("");
     setLoading(true);
     try {
-      const endpoint = isLogin ? "/api/auth/login" : "/api/auth/register";
+      const endpoint = isLogin
+        ? `${BASE_URL}/api/auth/login`
+        : `${BASE_URL}/api/auth/register`;
       const body = isLogin ? { email, password } : { name, email, password };
 
       const res = await fetch(endpoint, {
@@ -53,7 +56,6 @@ const Auth = () => {
       }}
     >
       <div className="card" style={{ width: "100%", maxWidth: "420px" }}>
-        {/* Logo */}
         <div
           style={{
             display: "flex",
@@ -76,7 +78,6 @@ const Auth = () => {
           </span>
         </div>
 
-        {/* Toggle */}
         <div
           style={{
             display: "flex",
@@ -117,7 +118,6 @@ const Auth = () => {
           ))}
         </div>
 
-        {/* Fields */}
         <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
           {!isLogin && (
             <div>

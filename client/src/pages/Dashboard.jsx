@@ -1,3 +1,4 @@
+import BASE_URL from "../api.js";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
@@ -21,7 +22,7 @@ const Dashboard = () => {
 
   const fetchSummaries = async () => {
     try {
-      const res = await fetch("/api/summary", {
+      const res = await fetch(`${BASE_URL}/api/summary`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -35,7 +36,7 @@ const Dashboard = () => {
 
   const handleDelete = async (id) => {
     try {
-      await fetch(`/api/summary/${id}`, {
+      await fetch(`${BASE_URL}/api/summary/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -48,7 +49,6 @@ const Dashboard = () => {
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "var(--cream)" }}>
       <Navbar />
-
       <div
         style={{ maxWidth: "900px", margin: "0 auto", padding: "48px 24px" }}
       >
